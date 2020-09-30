@@ -82,17 +82,16 @@ public class RSAEncryption {
 
         // Our secret message
         String message = "nibmnibmnibmnibm";
-        System.out.println("The AES Large File Decrypting Secret Key" + message);
+        System.out.println("The AES Large File Decrypting Secret Key Message: " + message);
 
         // Encrypt the message
         String cipherText = encrypt(message, pair.getPublic());
-
-        System.out.println(cipherText);
+        System.out.println("After encrypting the message using RSA Algorithm: " + cipherText);
 
         // Now decrypt it
         String decipheredMessage = decrypt(cipherText, pair.getPrivate());
 
-        System.out.println(decipheredMessage);
+        //System.out.println(decipheredMessage);
 
         // Let's sign our message
         String signature = sign("foobar", pair.getPrivate());
