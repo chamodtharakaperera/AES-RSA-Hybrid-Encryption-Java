@@ -13,6 +13,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class AES {
     public static void main(String[] args) throws Exception {
+        //Return the RSA Decrypted Message to AES Class as the Secret key that will be used for AES Encryption
         RSAEncryption enc = new RSAEncryption();
         var key = enc.main();
         System.out.println("AES Encryption Program Started Successfully!!!\n\n");
@@ -25,6 +26,7 @@ public class AES {
         decryptedFile(key, "C:\\Users\\charm\\Desktop\\AES\\encryptedtext.enc", "C:\\Users\\charm\\Desktop\\AES\\text-decrypt.zip");
     }
 
+    //File Encryption Code
     public static void encryptedFile(String secretKey, String fileInputPath, String fileOutPath)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IOException,
             IllegalBlockSizeException, BadPaddingException {
@@ -51,6 +53,7 @@ public class AES {
         System.out.println("Please wait still processing...");
     }
 
+    //File Decryption Code
     public static void decryptedFile(String secretKey, String fileInputPath, String fileOutPath)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IOException,
             IllegalBlockSizeException, BadPaddingException {
