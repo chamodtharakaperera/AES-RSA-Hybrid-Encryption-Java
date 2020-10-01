@@ -7,6 +7,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class RSAEncryption {
 
+    //Generate Public and Private Key pair
     public static KeyPair generateKeyPair() throws Exception {
         KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
         generator.initialize(2048, new SecureRandom());
@@ -36,6 +37,7 @@ public class RSAEncryption {
         return new KeyPair(publicKey, privateKey);
     }
 
+    //Encrypting Using Public Key
     public static String encrypt(String plainText, PublicKey publicKey) throws Exception {
         Cipher encryptCipher = Cipher.getInstance("RSA");
         encryptCipher.init(Cipher.ENCRYPT_MODE, publicKey);
@@ -45,6 +47,7 @@ public class RSAEncryption {
         return Base64.getEncoder().encodeToString(cipherText);
     }
 
+    //Decrypting Using Private Key
     public static String decrypt(String cipherText, PrivateKey privateKey) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(cipherText);
 
@@ -54,6 +57,7 @@ public class RSAEncryption {
         return new String(decriptCipher.doFinal(bytes), UTF_8);
     }
 
+    //Signing Using Private Key
     public static String sign(String plainText, PrivateKey privateKey) throws Exception {
         Signature privateSignature = Signature.getInstance("SHA256withRSA");
         privateSignature.initSign(privateKey);
